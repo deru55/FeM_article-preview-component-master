@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --ff-default: "Manrope", sans-serif;
+
+  --fw-500: 500;
+  --fw-700: 700;
+
+  --clr-neutral-1: hsl(210, 46%, 95%);
+  --clr-neutral-2: hsl(212, 23%, 69%);
+  --clr-neutral-3: hsl(214, 17%, 51%);
+  --clr-neutral-4: hsl(217, 19%, 35%);
+}
+
+/* utilities classes */
+.txt-neutral-2 {
+  color: var(--clr-neutral-2);
+}
+
+.wrap {
+  padding: 1rem var(--padding-inline);
+  display: grid;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  gap: var(--gap);
+  align-items: center;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+body {
+  font-family: var(--ff-default);
+  font-size: 0.813rem;
+  font-weight: var(--fw-500);
+  color: var(--clr-neutral-3);
+  line-height: 1.5;
+  background-color: var(--clr-neutral-1);
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+}
+
+.card {
+  --border-radius: 0.5rem;
+  --padding-inline: 2rem;
+
+  background-color: white;
+  margin-inline: 1.5rem;
+  border-radius: var(--border-radius);
+  max-width: 30rem;
+  display: grid;
+}
+
+.card__img {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card__body__text {
+  padding: 2rem var(--padding-inline) 1rem;
+}
+
+.card__body__text__title {
+  font-size: 1rem;
+  font-weight: var(--fw-700);
+  color: var(--clr-neutral-4);
+}
+
+.card__body__user {
+  --gap: 1rem;
+
+  position: relative;
+}
+
+.card__body__user__info {
+  color: var(--clr-neutral-2);
+  grid-template-columns: max-content auto max-content;
+}
+
+.card__body__user__info__avatar {
+  max-width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.card__body__user__info__name {
+  font-weight: var(--fw-700);
+  color: var(--clr-neutral-4);
+}
+
+.card__body__user__info__share-btn {
+  border: 0;
+  cursor: pointer;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: var(--clr-neutral-3);
+}
+
+.card__body__user__info__share-btn.active {
+  background-color: var(--clr-neutral-2);
+  fill: var(--clr-neutral-1);
+}
+
+.card__body__user__info.active {
+  background-color: var(--clr-neutral-4);
+}
+
+.card__body__user__social-links.active {
+  visibility: visible;
+}
+
+.card__body__user__social-links {
+  --bg-color: var(--clr-neutral-4);
+
+  max-width: calc((100% - 15px) - (var(--padding-inline) * 2));
+  visibility: hidden;
+  font-weight: var(--fw-700);
+  letter-spacing: 0.25rem;
+  color: var(--clr-neutral-2);
+  background-color: var(--bg-color);
+  grid-template-columns: max-content auto;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  padding-right: 0;
+}
+
+.card__body__user__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 769px) {
+  .card {
+    max-width: 46rem;
+    grid-template-columns: 40% auto;
+  }
+
+  .card__img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+  }
+
+  .card__body__text__title {
+    font-size: 1.25rem;
+  }
+
+  .card__body {
+    padding: 2rem 2.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .card__body__text,
+  .card__body__user__info {
+    padding: 0;
+  }
+
+  .card__body__user__info.active {
+    background-color: white;
+  }
+
+  .card__body__user__social-links {
+    padding: 1rem 2rem;
+    right: 0;
+    width: max-content;
+    translate: calc(50% - 16px) -135%;
+    height: auto;
+    border-radius: var(--border-radius);
+  }
+
+  .card__body__user__social-links::after {
+    content: "";
+    position: absolute;
+    top: 98%;
+    left: 50%;
+    margin-left: -12px;
+    border-width: 12px;
+    border-style: solid;
+    border-color: var(--bg-color) transparent transparent transparent;
+  }
+}
